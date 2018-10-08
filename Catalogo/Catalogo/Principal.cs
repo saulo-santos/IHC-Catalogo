@@ -20,10 +20,11 @@ namespace Catalogo
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            PreencherGridArtigos();
+            GridArtigosPreencher();
+            GridArtigosRedimensionar();
         }
 
-        private void PreencherGridArtigos()
+        private void LstCategoriaPreencher()
         {
             SqlConnection cnn = new SqlConnection();
             string pstrMsg = "";
@@ -46,7 +47,7 @@ namespace Catalogo
                 sqlDataAdap.Fill(dtRecord);
                 grdArtigos.DataSource = dtRecord;
 
-                FormatarGridArtigos();
+                GridArtigosFormatar();
             }
             else
             {
@@ -57,7 +58,46 @@ namespace Catalogo
             }
         }
 
-        private void FormatarGridArtigos()
+        private void grdArtigos_Resize(object sender, EventArgs e)
+        {
+            GridArtigosRedimensionar();
+        }
+
+        private void GridArtigosPreencher()
+        {
+            SqlConnection cnn = new SqlConnection();
+            string pstrMsg = "";
+            bool pbooRetorno = false;
+
+            cnn = ConexaoBD.CriarConexao(out pstrMsg, out pbooRetorno);
+
+            if (pbooRetorno)
+            {
+                string strSQL = @"
+                    SELECT 
+                    A.ARTI_CODIGO, A.ARTI_NOME, A.ARTI_CATE_CODIGO, C.CATE_TITULO
+                    FROM TB_ARTIGO A 
+                    INNER JOIN TB_CATEGORIA C ON C.CATE_CODIGO = A.ARTI_CATE_CODIGO";
+
+                SqlCommand sqlCmd = new SqlCommand(strSQL, cnn);
+                SqlDataAdapter sqlDataAdap = new SqlDataAdapter(sqlCmd);
+
+                DataTable dtRecord = new DataTable();
+                sqlDataAdap.Fill(dtRecord);
+                grdArtigos.DataSource = dtRecord;
+
+                GridArtigosFormatar();
+            }
+            else
+            {
+                MessageBox.Show(pstrMsg);
+
+                if (!pbooRetorno)
+                    Close();
+            }
+        }
+
+        private void GridArtigosFormatar()
         {
             grdArtigos.Columns[0].HeaderText = "Código";
             grdArtigos.Columns[0].Visible = false;
@@ -90,7 +130,8 @@ namespace Catalogo
             //    grdArtigos.Columns.Insert(columnIndex, btcEditar);
             //}
         }
-        private void grdArtigos_Resize(object sender, EventArgs e)
+
+        private void GridArtigosRedimensionar()
         {
             grdArtigos.Columns[1].Width = (int)(grdArtigos.Width * 0.70);
             grdArtigos.Columns[3].Width = (int)(grdArtigos.Width * 0.20);

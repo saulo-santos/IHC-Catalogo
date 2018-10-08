@@ -35,7 +35,7 @@
             this.txtCategoria = new System.Windows.Forms.TextBox();
             this.txtArtigo = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstCategorias = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdArtigos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -110,7 +110,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.listBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.lstCategorias);
             // 
             // splitContainer1.Panel2
             // 
@@ -119,16 +119,16 @@
             this.splitContainer1.SplitterDistance = 211;
             this.splitContainer1.TabIndex = 5;
             // 
-            // listBox1
+            // lstCategorias
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lstCategorias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(3, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(205, 485);
-            this.listBox1.TabIndex = 0;
+            this.lstCategorias.FormattingEnabled = true;
+            this.lstCategorias.Location = new System.Drawing.Point(3, 3);
+            this.lstCategorias.Name = "lstCategorias";
+            this.lstCategorias.Size = new System.Drawing.Size(205, 485);
+            this.lstCategorias.TabIndex = 0;
             // 
             // Principal
             // 
@@ -163,7 +163,7 @@
         private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.TextBox txtArtigo;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstCategorias;
     }
 }
 
