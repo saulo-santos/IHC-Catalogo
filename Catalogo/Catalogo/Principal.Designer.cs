@@ -34,7 +34,13 @@
             this.lblArtigo = new System.Windows.Forms.Label();
             this.txtCategoria = new System.Windows.Forms.TextBox();
             this.txtArtigo = new System.Windows.Forms.TextBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdArtigos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grdArtigos
@@ -42,17 +48,21 @@
             this.grdArtigos.AllowUserToAddRows = false;
             this.grdArtigos.AllowUserToDeleteRows = false;
             this.grdArtigos.AllowUserToOrderColumns = true;
+            this.grdArtigos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdArtigos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdArtigos.Location = new System.Drawing.Point(30, 153);
+            this.grdArtigos.Location = new System.Drawing.Point(3, 3);
             this.grdArtigos.Name = "grdArtigos";
             this.grdArtigos.ReadOnly = true;
-            this.grdArtigos.Size = new System.Drawing.Size(527, 288);
+            this.grdArtigos.Size = new System.Drawing.Size(564, 497);
             this.grdArtigos.TabIndex = 0;
+            this.grdArtigos.Resize += new System.EventHandler(this.grdArtigos_Resize);
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Location = new System.Drawing.Point(235, 9);
+            this.lblTitulo.Location = new System.Drawing.Point(364, 9);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(79, 13);
             this.lblTitulo.TabIndex = 1;
@@ -61,7 +71,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 54);
+            this.label1.Location = new System.Drawing.Point(201, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 2;
@@ -70,7 +80,7 @@
             // lblArtigo
             // 
             this.lblArtigo.AutoSize = true;
-            this.lblArtigo.Location = new System.Drawing.Point(235, 54);
+            this.lblArtigo.Location = new System.Drawing.Point(409, 57);
             this.lblArtigo.Name = "lblArtigo";
             this.lblArtigo.Size = new System.Drawing.Size(34, 13);
             this.lblArtigo.TabIndex = 2;
@@ -78,33 +88,67 @@
             // 
             // txtCategoria
             // 
-            this.txtCategoria.Location = new System.Drawing.Point(85, 51);
+            this.txtCategoria.Location = new System.Drawing.Point(259, 54);
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(100, 20);
             this.txtCategoria.TabIndex = 3;
             // 
             // txtArtigo
             // 
-            this.txtArtigo.Location = new System.Drawing.Point(277, 51);
+            this.txtArtigo.Location = new System.Drawing.Point(451, 54);
             this.txtArtigo.Name = "txtArtigo";
             this.txtArtigo.Size = new System.Drawing.Size(100, 20);
             this.txtArtigo.TabIndex = 4;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(12, 95);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.listBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.grdArtigos);
+            this.splitContainer1.Size = new System.Drawing.Size(785, 503);
+            this.splitContainer1.SplitterDistance = 211;
+            this.splitContainer1.TabIndex = 5;
+            // 
+            // listBox1
+            // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(3, 3);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(205, 485);
+            this.listBox1.TabIndex = 0;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 469);
+            this.ClientSize = new System.Drawing.Size(809, 610);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.txtArtigo);
             this.Controls.Add(this.txtCategoria);
             this.Controls.Add(this.lblArtigo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.grdArtigos);
             this.Name = "Principal";
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdArtigos)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,6 +162,8 @@
         private System.Windows.Forms.Label lblArtigo;
         private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.TextBox txtArtigo;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

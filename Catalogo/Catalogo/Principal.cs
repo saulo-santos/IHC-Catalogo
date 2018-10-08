@@ -20,10 +20,10 @@ namespace Catalogo
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            PreencherArtigos();
+            PreencherGridArtigos();
         }
 
-        private void PreencherArtigos()
+        private void PreencherGridArtigos()
         {
             SqlConnection cnn = new SqlConnection();
             string pstrMsg = "";
@@ -33,7 +33,11 @@ namespace Catalogo
 
             if (pbooRetorno)
             {
-                string strSQL = "SELECT * FROM TB_ARTIGO";
+                string strSQL = @"
+                    SELECT 
+                    A.ARTI_CODIGO, A.ARTI_NOME, A.ARTI_CATE_CODIGO, C.CATE_TITULO
+                    FROM TB_ARTIGO A 
+                    INNER JOIN TB_CATEGORIA C ON C.CATE_CODIGO = A.ARTI_CATE_CODIGO";
 
                 SqlCommand sqlCmd = new SqlCommand(strSQL, cnn);
                 SqlDataAdapter sqlDataAdap = new SqlDataAdapter(sqlCmd);
@@ -41,6 +45,8 @@ namespace Catalogo
                 DataTable dtRecord = new DataTable();
                 sqlDataAdap.Fill(dtRecord);
                 grdArtigos.DataSource = dtRecord;
+
+                FormatarGridArtigos();
             }
             else
             {
@@ -51,5 +57,43 @@ namespace Catalogo
             }
         }
 
+        private void FormatarGridArtigos()
+        {
+            grdArtigos.Columns[0].HeaderText = "Código";
+            grdArtigos.Columns[0].Visible = false;
+
+            grdArtigos.Columns[1].HeaderText = "Título";
+
+            grdArtigos.Columns[2].HeaderText = "Código Categoria";
+            grdArtigos.Columns[2].Visible = false;
+
+            grdArtigos.Columns[3].HeaderText = "Categoria";
+
+            DataGridViewButtonColumn btcEditar = new DataGridViewButtonColumn();
+            btcEditar.Name = "btnEditar";
+            btcEditar.HeaderText = "Editar";
+            btcEditar.UseColumnTextForButtonValue = true;
+            btcEditar.Text = "Editar";
+
+            DataGridViewButtonColumn btcExcluir = new DataGridViewButtonColumn();
+            btcExcluir.Name = "btcExcluir";
+            btcExcluir.HeaderText = "Excluir";
+            btcExcluir.UseColumnTextForButtonValue = true;
+            btcExcluir.Text = "Excluir";
+
+            int columnIndex = 4;
+            grdArtigos.Columns.Add(btcEditar);
+            grdArtigos.Columns.Add(btcExcluir);
+
+            //if (grdArtigos.Columns["btnEditar"] == null)
+            //{
+            //    grdArtigos.Columns.Insert(columnIndex, btcEditar);
+            //}
+        }
+        private void grdArtigos_Resize(object sender, EventArgs e)
+        {
+            grdArtigos.Columns[1].Width = (int)(grdArtigos.Width * 0.70);
+            grdArtigos.Columns[3].Width = (int)(grdArtigos.Width * 0.20);
+        }
     }
 }
