@@ -20,42 +20,40 @@ namespace Catalogo
 
         private void Principal_Load(object sender, EventArgs e)
         {
+            LstCategoriaPreencher();
             GridArtigosPreencher();
             GridArtigosRedimensionar();
         }
 
         private void LstCategoriaPreencher()
         {
-            SqlConnection cnn = new SqlConnection();
-            string pstrMsg = "";
-            bool pbooRetorno = false;
+            //SqlConnection cnn = new SqlConnection();
+            //string pstrMsg = "";
+            //bool pbooRetorno = false;
 
-            cnn = ConexaoBD.CriarConexao(out pstrMsg, out pbooRetorno);
+            //cnn = ConexaoBD.CriarConexao(out pstrMsg, out pbooRetorno);
 
-            if (pbooRetorno)
-            {
-                string strSQL = @"
-                    SELECT 
-                    A.ARTI_CODIGO, A.ARTI_NOME, A.ARTI_CATE_CODIGO, C.CATE_TITULO
-                    FROM TB_ARTIGO A 
-                    INNER JOIN TB_CATEGORIA C ON C.CATE_CODIGO = A.ARTI_CATE_CODIGO";
+            //if (pbooRetorno)
+            //{
+            //    string strSQL = @"
+            //        SELECT 
+            //        C.CATE_CODIGO, C.CATE_TITULO
+            //        FROM TB_CATEGORIA C";
 
-                SqlCommand sqlCmd = new SqlCommand(strSQL, cnn);
-                SqlDataAdapter sqlDataAdap = new SqlDataAdapter(sqlCmd);
+            //    SqlCommand sqlCmd = new SqlCommand(strSQL, cnn);
+            //    SqlDataAdapter sqlDataAdap = new SqlDataAdapter(sqlCmd);
 
-                DataTable dtRecord = new DataTable();
-                sqlDataAdap.Fill(dtRecord);
-                grdArtigos.DataSource = dtRecord;
+            //    DataTable dtRecord = new DataTable();
+            //    sqlDataAdap.Fill(dtRecord);
+            //    lstCategorias.DataSource = dtRecord;
+            //}
+            //else
+            //{
+            //    MessageBox.Show(pstrMsg);
 
-                GridArtigosFormatar();
-            }
-            else
-            {
-                MessageBox.Show(pstrMsg);
-
-                if (!pbooRetorno)
-                    Close();
-            }
+            //    if (!pbooRetorno)
+            //        Close();
+            //}
         }
 
         private void grdArtigos_Resize(object sender, EventArgs e)
