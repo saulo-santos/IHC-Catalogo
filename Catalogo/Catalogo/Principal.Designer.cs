@@ -51,10 +51,12 @@
             this.grdArtigos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdArtigos.BackgroundColor = System.Drawing.SystemColors.Window;
             this.grdArtigos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdArtigos.Location = new System.Drawing.Point(3, 3);
             this.grdArtigos.Name = "grdArtigos";
             this.grdArtigos.ReadOnly = true;
+            this.grdArtigos.RowHeadersVisible = false;
             this.grdArtigos.Size = new System.Drawing.Size(564, 497);
             this.grdArtigos.TabIndex = 0;
             this.grdArtigos.Resize += new System.EventHandler(this.grdArtigos_Resize);
@@ -129,11 +131,13 @@
             this.lstCategorias.Name = "lstCategorias";
             this.lstCategorias.Size = new System.Drawing.Size(205, 485);
             this.lstCategorias.TabIndex = 0;
+            this.lstCategorias.SelectedIndexChanged += new System.EventHandler(this.lstCategorias_SelectedIndexChanged);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(809, 610);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.txtArtigo);
