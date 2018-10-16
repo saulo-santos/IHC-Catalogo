@@ -55,6 +55,12 @@
       <DependentUpon>ArtigoVisualizador.cs</DependentUpon>
     </Compile>
     <Compile Include="ConexaoBD.cs" />
+    <Compile Include="ArtigoListagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArtigoListagem.Designer.cs">
+      <DependentUpon>ArtigoListagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,9 +69,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Util\DataGridViewEnableDisableButtonCell.cs" />
     <EmbeddedResource Include="ArtigoVisualizador.resx">
       <DependentUpon>ArtigoVisualizador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArtigoListagem.resx">
+      <DependentUpon>ArtigoListagem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -79,6 +93,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +111,18 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Icons\add-1.png" />
+    <Content Include="Icons\garbage-1.png" />
+    <Content Include="Icons\minus-1.png" />
+    <Content Include="Icons\minus.png" />
+    <Content Include="Icons\plus.png" />
+    <Content Include="Icons\resume.png" />
+    <Content Include="Icons\search-1.png" />
+    <Content Include="Icons\search.png" />
+    <None Include="Resources\Visualizador.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

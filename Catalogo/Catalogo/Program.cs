@@ -16,6 +16,7 @@ namespace Catalogo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new ArtigoListagem());
             Application.Run(new Principal());
         }
     }

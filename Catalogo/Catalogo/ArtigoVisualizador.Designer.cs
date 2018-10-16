@@ -77,6 +77,7 @@
             this.Controls.Add(this.lblTítulo);
             this.Name = "ArtigoVisualizador";
             this.Text = "ArtigoVisualizador";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ArtigoVisualizador_Load);
             this.Resize += new System.EventHandler(this.ArtigoVisualizador_Resize);
             this.ResumeLayout(false);
