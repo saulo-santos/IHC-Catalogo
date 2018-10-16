@@ -60,6 +60,12 @@ namespace Catalogo
 
             var cellEnabled = ((DataGridViewDisableButtonCell)grdArtigos.Rows[rowSel].Cells[5]).Enabled;
 
+            if (e.ColumnIndex == 4)
+            {
+                ArtigoVisualizador artigoVisualizador = new ArtigoVisualizador(artigoCodigo);
+                artigoVisualizador.Show();
+            }
+
             if (e.ColumnIndex == 5 && cellEnabled)
             {
                 grdArtigos.Rows.RemoveAt(rowSel);
