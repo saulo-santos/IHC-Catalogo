@@ -70,7 +70,7 @@
             this.txtArtigo.Location = new System.Drawing.Point(40, 0);
             this.txtArtigo.Name = "txtArtigo";
             this.txtArtigo.Size = new System.Drawing.Size(527, 20);
-            this.txtArtigo.TabIndex = 4;
+            this.txtArtigo.TabIndex = 2;
             this.txtArtigo.TextChanged += new System.EventHandler(this.txtArtigo_TextChanged);
             // 
             // sptArtigoListagem
@@ -93,6 +93,7 @@
             this.sptArtigoListagem.Size = new System.Drawing.Size(803, 523);
             this.sptArtigoListagem.SplitterDistance = 215;
             this.sptArtigoListagem.TabIndex = 5;
+            this.sptArtigoListagem.TabStop = false;
             // 
             // lstCategorias
             // 
@@ -103,7 +104,7 @@
             this.lstCategorias.Location = new System.Drawing.Point(3, 26);
             this.lstCategorias.Name = "lstCategorias";
             this.lstCategorias.Size = new System.Drawing.Size(209, 485);
-            this.lstCategorias.TabIndex = 0;
+            this.lstCategorias.TabIndex = 1;
             this.lstCategorias.SelectedIndexChanged += new System.EventHandler(this.lstCategorias_SelectedIndexChanged);
             // 
             // txtCategoria
@@ -111,7 +112,7 @@
             this.txtCategoria.Location = new System.Drawing.Point(58, 0);
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(150, 20);
-            this.txtCategoria.TabIndex = 3;
+            this.txtCategoria.TabIndex = 0;
             this.txtCategoria.TextChanged += new System.EventHandler(this.txtCategoria_TextChanged);
             // 
             // pnlInfo
@@ -146,7 +147,7 @@
             this.lklDesfazerExclusao.Location = new System.Drawing.Point(258, 0);
             this.lklDesfazerExclusao.Name = "lklDesfazerExclusao";
             this.lklDesfazerExclusao.Size = new System.Drawing.Size(142, 27);
-            this.lklDesfazerExclusao.TabIndex = 7;
+            this.lklDesfazerExclusao.TabIndex = 4;
             this.lklDesfazerExclusao.TabStop = true;
             this.lklDesfazerExclusao.Text = "Desfazer Exclusão";
             this.lklDesfazerExclusao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -167,7 +168,7 @@
             this.grdArtigos.ReadOnly = true;
             this.grdArtigos.RowHeadersVisible = false;
             this.grdArtigos.Size = new System.Drawing.Size(578, 494);
-            this.grdArtigos.TabIndex = 0;
+            this.grdArtigos.TabIndex = 3;
             this.grdArtigos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdArtigos_CellContentClickAsync);
             this.grdArtigos.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdArtigos_CellPainting);
             this.grdArtigos.Resize += new System.EventHandler(this.grdArtigos_Resize);
