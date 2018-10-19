@@ -70,10 +70,12 @@ namespace Catalogo
                 }
             }
 
-            ArtigoVisualizador artigoListagem = new ArtigoVisualizador(ArtigoCodigo);
-            artigoListagem.MdiParent = this;
-            artigoListagem.WindowState = FormWindowState.Maximized;
-            artigoListagem.Show();
+            ArtigoVisualizador artigoVisualizador = new ArtigoVisualizador(ArtigoCodigo);
+            artigoVisualizador.MdiParent = this;
+            artigoVisualizador.WindowState = FormWindowState.Maximized;
+            artigoVisualizador.Height = this.Height - 20;
+            artigoVisualizador.Width = this.Width;
+            artigoVisualizador.Show();
         }
     }
 }
