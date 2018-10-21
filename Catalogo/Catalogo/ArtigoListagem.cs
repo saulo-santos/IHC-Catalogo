@@ -21,6 +21,11 @@ namespace Catalogo
 
         #region [ Controles ]
 
+        private void ArtigoListagem_Activated(object sender, EventArgs e)
+        {
+            GridArtigosPreencher();
+        }
+
         private void ArtigoListagem_Load(object sender, EventArgs e)
         {
             LstCategoriaPreencher();
@@ -73,10 +78,32 @@ namespace Catalogo
                 ((Principal)this.Parent.Parent).artigoVisualizador(artigoCodigo);
             }
 
+            if (e.ColumnIndex == ((DataGridViewDisableButtonCell)grdArtigos.Rows[rowSel].Cells["btnEditar"]).ColumnIndex)
+            {
+                ((Principal)this.Parent.Parent).artigoCadastro(artigoCodigo);
+            }
+
             if (e.ColumnIndex == ((DataGridViewDisableButtonCell)grdArtigos.Rows[rowSel].Cells["btnExcluir"]).ColumnIndex && cellExcluirEnabled)
             {
                 grdArtigos.Rows.RemoveAt(rowSel);
                 await ArtigoExcluirAsync(artigoCodigo);
+            }
+        }
+
+        private void grdArtigos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex < 0 || e.RowIndex < 0) return;
+
+
+            int colSel = e.ColumnIndex;
+            int rowSel = e.RowIndex;
+
+            int artigoCodigo = int.Parse(grdArtigos.Rows[rowSel].Cells["ARTI_CODIGO"].Value.ToString());
+
+            if (e.ColumnIndex == ((DataGridViewTextBoxCell)grdArtigos.Rows[rowSel].Cells["ARTI_NOME"]).ColumnIndex 
+                || e.ColumnIndex == ((DataGridViewTextBoxCell)grdArtigos.Rows[rowSel].Cells["CATE_NOME"]).ColumnIndex)
+            {
+                ((Principal)this.Parent.Parent).artigoVisualizador(artigoCodigo);
             }
         }
 
@@ -137,10 +164,10 @@ namespace Catalogo
                 string strSQL = @"
                 SELECT * FROM 
                 (
-                SELECT 0 CATE_CODIGO, '(TODOS)' CATE_TITULO
+                SELECT 0 CATE_CODIGO, '(TODOS)' CATE_NOME
                 UNION ALL
                 SELECT 
-	                C.CATE_CODIGO, C.CATE_TITULO
+	                C.CATE_CODIGO, C.CATE_NOME
                 FROM TB_CATEGORIA C
                 ) CatOrdenado 
                 WHERE 1 = 1 ";
@@ -148,10 +175,10 @@ namespace Catalogo
 
                 if (!string.IsNullOrEmpty(titCategoria))
                 {
-                    strSQL += "AND CatOrdenado.CATE_TITULO LIKE '%" + titCategoria + "%' ";
+                    strSQL += "AND CatOrdenado.CATE_NOME LIKE '%" + titCategoria + "%' ";
                 }
 
-                strSQL += "ORDER BY CatOrdenado.CATE_TITULO ";
+                strSQL += "ORDER BY CatOrdenado.CATE_NOME ";
 
                 SqlCommand sqlCmd = new SqlCommand(strSQL, cnn);
 
@@ -161,7 +188,7 @@ namespace Catalogo
                 da.Fill(dt);
 
                 lstCategorias.ValueMember = "CATE_CODIGO";
-                lstCategorias.DisplayMember = "CATE_TITULO";
+                lstCategorias.DisplayMember = "CATE_NOME";
                 lstCategorias.DataSource = dt;
             }
             else
@@ -177,7 +204,7 @@ namespace Catalogo
             cnn.Close();
         }
 
-        private void GridArtigosPreencher()
+        public void GridArtigosPreencher()
         {
             grdArtigos.Columns.Clear();
             grdArtigos.DataSource = null;
@@ -186,7 +213,7 @@ namespace Catalogo
             string pstrMsg = "";
             bool pbooRetorno = false;
 
-            int idCategoria = lstCategorias.SelectedIndex;
+            int idCategoria = int.Parse(lstCategorias.SelectedValue.ToString());
             string titArtigo = txtArtigo.Text;
 
             cnn = ConexaoBD.CriarConexao(out pstrMsg, out pbooRetorno);
@@ -195,7 +222,7 @@ namespace Catalogo
             {
                 string strSQL = @"
                     SELECT 
-                    A.ARTI_CODIGO, A.ARTI_NOME, A.ARTI_CATE_CODIGO, C.CATE_TITULO
+                    A.ARTI_CODIGO, A.ARTI_NOME, A.ARTI_CATE_CODIGO, C.CATE_NOME
                     FROM TB_ARTIGO A 
                     INNER JOIN TB_CATEGORIA C ON C.CATE_CODIGO = A.ARTI_CATE_CODIGO 
                     WHERE 1 = 1 ";
@@ -219,6 +246,15 @@ namespace Catalogo
                 sqlDataAdap.Fill(dtRecord);
 
                 grdArtigos.DataSource = dtRecord;
+
+                GridArtigosFormatar();
+
+                cnn.Close();
+
+                if (dtRecord.Rows.Count == 0)
+                {
+                    MessageBox.Show("Nenhum registro foi encontrado para esse filtro!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -226,11 +262,7 @@ namespace Catalogo
 
                 if (!pbooRetorno)
                     Close();
-            }
-
-            cnn.Close();
-
-            GridArtigosFormatar();            
+            }        
         }
 
         private void GridArtigosFormatar()
@@ -277,19 +309,19 @@ namespace Catalogo
             txtCategoria.Width = lstCategorias.Width - lblCategoria.Width - 2;
             txtArtigo.Width = grdArtigos.Width - lblArtigo.Width - 2;
 
-            int intButtonWidth = 75;
+            int intButtonWidth = 100;
             int intGridViewWidthWoutButton = grdArtigos.Width - (intButtonWidth * 3);
             
             if (grdArtigos.Columns.Count >= 7)
             {
                 grdArtigos.Columns["ARTI_NOME"].Width = (int)(intGridViewWidthWoutButton * 0.74);
-                grdArtigos.Columns["CATE_TITULO"].Width = (int)(intGridViewWidthWoutButton * 0.25);
+                grdArtigos.Columns["CATE_NOME"].Width = (int)(intGridViewWidthWoutButton * 0.25);
                 grdArtigos.Columns["btnVisualizar"].Width = intButtonWidth;
                 grdArtigos.Columns["btnEditar"].Width = intButtonWidth;
                 grdArtigos.Columns["btnExcluir"].Width = intButtonWidth;
             }
 
-            sptArtigoListagem.Height = this.Height - 100;
+            sptArtigoListagem.Height = this.Height - 125;
             sptArtigoListagem.Width = this.Width - 45;
 
             pnlInfo.Left = grdArtigos.Width - pnlInfo.Width;

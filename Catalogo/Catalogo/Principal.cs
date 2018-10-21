@@ -19,6 +19,11 @@ namespace Catalogo
             InitializeComponent();
         }
 
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            artigoListagem();
+        }
+
         private void Principal_Resize(object sender, EventArgs e)
         {
             foreach (Form form in Application.OpenForms)
@@ -31,9 +36,53 @@ namespace Catalogo
             }
         }
 
-        private void artigosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuCadastrarCategoria_Click(object sender, EventArgs e)
+        {
+            categoriaCadastro();
+        }
+
+        private void mnuCadastrarArtigo_Click(object sender, EventArgs e)
+        {
+            artigoCadastro();
+        }
+
+        private void mnuListaArtigo_Click(object sender, EventArgs e)
         {
             artigoListagem();
+        }
+
+        private void categoriaCadastro()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(CategoriaCadastro))
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+
+            CategoriaCadastro categoriaCadastro = new CategoriaCadastro();
+            categoriaCadastro.MdiParent = this;
+            categoriaCadastro.WindowState = FormWindowState.Maximized;
+            categoriaCadastro.Show();
+        }
+
+        public void artigoCadastro(int ArtigoCodigo = 0)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(ArtigoCadastro))
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+
+            ArtigoCadastro artigoCadastro = new ArtigoCadastro(ArtigoCodigo);
+            artigoCadastro.MdiParent = this;
+            artigoCadastro.WindowState = FormWindowState.Maximized;
+            artigoCadastro.Show();
         }
 
         private void artigoListagem()
@@ -57,7 +106,7 @@ namespace Catalogo
             artigoListagem.Show();
         }
 
-        public void artigoVisualizador(int ArtigoCodigo)
+        public void artigoVisualizador(int ArtigoCodigo = 0)
         {
             foreach (Form form in Application.OpenForms)
             {

@@ -48,11 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtigoCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArtigoCadastro.Designer.cs">
+      <DependentUpon>ArtigoCadastro.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArtigoVisualizador.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ArtigoVisualizador.Designer.cs">
       <DependentUpon>ArtigoVisualizador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriaCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoriaCadastro.Designer.cs">
+      <DependentUpon>CategoriaCadastro.cs</DependentUpon>
     </Compile>
     <Compile Include="ConexaoBD.cs" />
     <Compile Include="ArtigoListagem.cs">
@@ -74,12 +86,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UsrCtrlInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrlInfo.Designer.cs">
+      <DependentUpon>UsrCtrlInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\DataGridViewEnableDisableButtonCell.cs" />
+    <EmbeddedResource Include="ArtigoCadastro.resx">
+      <DependentUpon>ArtigoCadastro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ArtigoVisualizador.resx">
       <DependentUpon>ArtigoVisualizador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ArtigoListagem.resx">
       <DependentUpon>ArtigoListagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoriaCadastro.resx">
+      <DependentUpon>CategoriaCadastro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -96,6 +120,9 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrlInfo.resx">
+      <DependentUpon>UsrCtrlInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

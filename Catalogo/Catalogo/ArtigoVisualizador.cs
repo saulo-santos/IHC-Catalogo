@@ -15,7 +15,7 @@ namespace Catalogo
     {
         public int ArtigoCodigo = 0;
 
-        public ArtigoVisualizador(int pArtigoCodigo)
+        public ArtigoVisualizador(int pArtigoCodigo = 0)
         {
             this.ArtigoCodigo = pArtigoCodigo;
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace Catalogo
                 if (pbooRetorno)
                 {
                     string strSQL = @"
-                    SELECT A.ARTI_NOME, C.CATE_TITULO, A.ARTI_DESCRICAO
+                    SELECT A.ARTI_NOME, C.CATE_NOME, A.ARTI_TEXTO
                     FROM TB_ARTIGO A
                     INNER JOIN TB_CATEGORIA C ON C.CATE_CODIGO = A.ARTI_CATE_CODIGO
                     WHERE A.ARTI_CODIGO = " + ArtigoCodigo;
