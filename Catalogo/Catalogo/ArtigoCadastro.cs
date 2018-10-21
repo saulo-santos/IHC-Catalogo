@@ -128,49 +128,6 @@ namespace Catalogo
             picImagemVisualizador.Height = tpgImagens.Height - picImagemVisualizador.Top - 10;
 
             #endregion
-
-            /* if (this.Height >= 550)
-             {
-                 txtTexto.Height = this.ClientSize.Height - txtTexto.Top - (btnFechar.Height + 20);
-             }
-             txtTexto.Width = this.tpgDados.Width - (txtTexto.Left * 2);
-
-             cmbCategoria.Width = this.tpgDados.Width - (txtTexto.Left * 2);
-
-             if (this.ClientSize.Width >= btnSalvar.Width + btnFechar.Width + 32)
-             {
-                 btnFechar.Left = (tpgDados.Left + tpgDados.Width) - btnFechar.Width;
-                 btnSalvar.Left = btnFechar.Left - 8 - btnSalvar.Width;
-             }
-
-             if (this.Height >= 550)
-             {
-                 btnFechar.Top = this.tpgDados.Height - btnFechar.Height - 10;
-                 btnSalvar.Top = this.tpgDados.Height - btnSalvar.Height - 10;
-             }*/
-
-            //--------------------------
-            /*lblTitulo.Left = (this.ClientSize.Width - lblTitulo.Width) / 2;
-
-            if (this.Height >= 550)
-            {
-                txtTexto.Height = this.ClientSize.Height - txtTexto.Top - (btnFechar.Height + 20);
-            }
-            txtTexto.Width = this.ClientSize.Width - (txtTexto.Left * 2);
-
-            cmbCategoria.Width = this.ClientSize.Width - (txtTexto.Left * 2);
-
-            if (this.ClientSize.Width >= btnSalvar.Width + btnFechar.Width + 32)
-            {
-                btnFechar.Left = (txtTexto.Left + txtTexto.Width) - btnFechar.Width;
-                btnSalvar.Left = btnFechar.Left - 8 - btnSalvar.Width;
-            }
-
-            if (this.Height >= 550)
-            {
-                btnFechar.Top = this.ClientSize.Height - btnFechar.Height - 10;
-                btnSalvar.Top = this.ClientSize.Height - btnSalvar.Height - 10;
-            }*/
         }
 
         private void LstCategoriaPreencher()
