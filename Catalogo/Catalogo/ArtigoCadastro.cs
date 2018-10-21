@@ -73,6 +73,20 @@ namespace Catalogo
             RedimencionaObjetos();
         }
 
+        private void btnImagemProcurar_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlgImagem = new OpenFileDialog())
+            {
+                dlgImagem.Title = "Procurar Imagens";
+                dlgImagem.Filter = "Arquivos de Imagem (*.jpg, *.jpeg, *.bmp) | *.jpg; *.jpeg; *.bmp";
+
+                if (dlgImagem.ShowDialog() == DialogResult.OK)
+                {
+                    picImagemVisualizador.Image = new Bitmap(dlgImagem.FileName);
+                }
+            }
+        }
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             ArtigoSalvar();
@@ -86,6 +100,57 @@ namespace Catalogo
         private void RedimencionaObjetos()
         {
             lblTitulo.Left = (this.ClientSize.Width - lblTitulo.Width) / 2;
+
+            tabArtigo.Width = this.ClientSize.Width - 20;
+
+            #region TabDados
+            cmbCategoria.Width = tabArtigo.Width - 22;
+
+            btnFechar.Left = (tabArtigo.Left + tabArtigo.Width) - btnFechar.Width;
+            btnSalvar.Left = btnFechar.Left - 8 - btnSalvar.Width;
+
+            btnFechar.Top = this.ClientSize.Height - btnFechar.Height - 10;
+            btnSalvar.Top = this.ClientSize.Height - btnSalvar.Height - 10;
+
+            tabArtigo.Height = btnFechar.Top - 45;
+            txtTexto.Height = tpgDados.Height - txtTexto.Top - 12;
+            #endregion 
+
+            #region TabImagens
+
+            lsvImagens.Left = tpgImagens.Width - lsvImagens.Width - 10;
+            lsvImagens.Height = tpgImagens.Height - 20;
+
+            btnImagemProcurar.Left = lsvImagens.Left - 10 - btnImagemProcurar.Width;
+            txtImagemDescricao.Width = btnImagemProcurar.Left + btnImagemProcurar.Width - 6;
+            btnSalvarImagem.Left = lsvImagens.Left - 10 - btnImagemProcurar.Width;
+            picImagemVisualizador.Width = btnImagemProcurar.Left + btnImagemProcurar.Width - 6;
+            picImagemVisualizador.Height = tpgImagens.Height - picImagemVisualizador.Top - 10;
+
+            #endregion
+
+            /* if (this.Height >= 550)
+             {
+                 txtTexto.Height = this.ClientSize.Height - txtTexto.Top - (btnFechar.Height + 20);
+             }
+             txtTexto.Width = this.tpgDados.Width - (txtTexto.Left * 2);
+
+             cmbCategoria.Width = this.tpgDados.Width - (txtTexto.Left * 2);
+
+             if (this.ClientSize.Width >= btnSalvar.Width + btnFechar.Width + 32)
+             {
+                 btnFechar.Left = (tpgDados.Left + tpgDados.Width) - btnFechar.Width;
+                 btnSalvar.Left = btnFechar.Left - 8 - btnSalvar.Width;
+             }
+
+             if (this.Height >= 550)
+             {
+                 btnFechar.Top = this.tpgDados.Height - btnFechar.Height - 10;
+                 btnSalvar.Top = this.tpgDados.Height - btnSalvar.Height - 10;
+             }*/
+
+            //--------------------------
+            /*lblTitulo.Left = (this.ClientSize.Width - lblTitulo.Width) / 2;
 
             if (this.Height >= 550)
             {
@@ -105,7 +170,7 @@ namespace Catalogo
             {
                 btnFechar.Top = this.ClientSize.Height - btnFechar.Height - 10;
                 btnSalvar.Top = this.ClientSize.Height - btnSalvar.Height - 10;
-            }
+            }*/
         }
 
         private void LstCategoriaPreencher()
@@ -157,12 +222,35 @@ namespace Catalogo
             }
         }
 
+        private bool ArtigoValidaCampos()
+        {
+            if (string.IsNullOrEmpty(txtTitulo.Text.Trim()))
+            {
+                MessageBox.Show("O campo 'Título' é obrigatório. Por favor preencha-o!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            if (cmbCategoria.SelectedIndex == 0)
+            {
+                MessageBox.Show("O campo 'Categoria' é obrigatório. Por favor escolha um dos itens da Lista!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtTexto.Text.Trim()))
+            {
+                MessageBox.Show("O campo 'Texto' é obrigatório. Por favor preencha-o!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            return true;
+        }
+
         private void ArtigoSalvar()
         {
             try
             {
                 // Valida se o(s) campo(s) obrigatórios foram preenchidos
-                if (!ValidaCampos())
+                if (!ArtigoValidaCampos())
                 {
                     return;
                 }
@@ -202,7 +290,7 @@ namespace Catalogo
                         Close();
                     }
 
-                    LimpaCampos();
+                    ArtigoLimpaCampos();
                 }
                 else
                 {
@@ -220,7 +308,7 @@ namespace Catalogo
             }
         }
 
-        private void LimpaCampos()
+        private void ArtigoLimpaCampos()
         {
             txtTitulo.Text = string.Empty;
             cmbCategoria.SelectedIndex = 0;
@@ -229,27 +317,73 @@ namespace Catalogo
             txtTitulo.Focus();
         }
 
-        private bool ValidaCampos()
+        private bool ImagemValidaCampos()
         {
-            if (string.IsNullOrEmpty(txtTitulo.Text.Trim()))
+            if (string.IsNullOrEmpty(txtImagemDescricao.Text.Trim()))
             {
-                MessageBox.Show("O campo 'Título' é obrigatório. Por favor preencha-o!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("O campo de 'Descrição' da imagem é obrigatório. Por favor preencha-o!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
 
-            if (cmbCategoria.SelectedIndex == 0)
+            if (picImagemVisualizador == null && picImagemVisualizador.Image == null)
             {
-                MessageBox.Show("O campo 'Categoria' é obrigatório. Por favor escolha um dos itens da Lista!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(txtTexto.Text.Trim()))
-            {
-                MessageBox.Show("O campo 'Texto' é obrigatório. Por favor preencha-o!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Procure por uma imagem para depois adiciona-la!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
 
             return true;
+        }
+
+        private void ImagemLimpaCampos()
+        {
+            txtImagemDescricao.Text = string.Empty;
+            picImagemVisualizador = null;
+
+            btnImagemProcurar.Focus();
+        }
+
+        private void btnSalvarImagem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ImagemValidaCampos())
+                {
+                    return;
+                }
+
+                SqlConnection cnn = new SqlConnection();
+                string pstrMsg = "";
+                bool pbooRetorno = false;
+
+                cnn = ConexaoBD.CriarConexao(out pstrMsg, out pbooRetorno);
+
+                if (pbooRetorno)
+                {
+                    imlImagens.Images.Add(txtImagemDescricao.Text, picImagemVisualizador.Image);
+                    lsvImagens.Items.Clear();
+
+                    for (int i = 0; i < imlImagens.Images.Count; i++)
+                    {
+                        lsvImagens.Items.Add(new ListViewItem { ImageIndex = i, Text = txtImagemDescricao.Text });
+                    }
+
+                    ArtigoLimpaCampos();
+                }
+                else
+                {
+                    MessageBox.Show(pstrMsg, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    if (!pbooRetorno)
+                        Close();
+                }
+
+                cnn.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
     }

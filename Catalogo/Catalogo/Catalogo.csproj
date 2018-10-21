@@ -86,12 +86,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UsrCtrlInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrlInfo.Designer.cs">
-      <DependentUpon>UsrCtrlInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Util\DataGridViewEnableDisableButtonCell.cs" />
     <EmbeddedResource Include="ArtigoCadastro.resx">
       <DependentUpon>ArtigoCadastro.cs</DependentUpon>
@@ -120,9 +114,6 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrlInfo.resx">
-      <DependentUpon>UsrCtrlInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

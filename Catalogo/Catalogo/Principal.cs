@@ -21,7 +21,7 @@ namespace Catalogo
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            artigoListagem();
+            artigoCadastro();
         }
 
         private void Principal_Resize(object sender, EventArgs e)
