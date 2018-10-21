@@ -40,19 +40,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTitulo = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
-            this.imlImagens = new System.Windows.Forms.ImageList(this.components);
-            this.tabLinks = new System.Windows.Forms.TabPage();
-            this.btnImagemProcurar = new System.Windows.Forms.Button();
-            this.btnSalvarImagem = new System.Windows.Forms.Button();
-            this.picImagemVisualizador = new System.Windows.Forms.PictureBox();
-            this.lblImagemDescricao = new System.Windows.Forms.Label();
-            this.txtImagemDescricao = new System.Windows.Forms.TextBox();
             this.tpgImagens = new System.Windows.Forms.TabPage();
             this.lsvImagens = new System.Windows.Forms.ListView();
+            this.imlImagens = new System.Windows.Forms.ImageList(this.components);
+            this.txtImagemDescricao = new System.Windows.Forms.TextBox();
+            this.lblImagemDescricao = new System.Windows.Forms.Label();
+            this.picImagemVisualizador = new System.Windows.Forms.PictureBox();
+            this.btnSalvarImagem = new System.Windows.Forms.Button();
+            this.btnImagemProcurar = new System.Windows.Forms.Button();
+            this.tabLinks = new System.Windows.Forms.TabPage();
             this.tabArtigo.SuspendLayout();
             this.tpgDados.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picImagemVisualizador)).BeginInit();
             this.tpgImagens.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picImagemVisualizador)).BeginInit();
             this.SuspendLayout();
             // 
             // btnFechar
@@ -181,69 +181,6 @@
             this.lblNome.TabIndex = 9;
             this.lblNome.Text = "Título";
             // 
-            // imlImagens
-            // 
-            this.imlImagens.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imlImagens.ImageSize = new System.Drawing.Size(16, 16);
-            this.imlImagens.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // tabLinks
-            // 
-            this.tabLinks.Location = new System.Drawing.Point(4, 29);
-            this.tabLinks.Name = "tabLinks";
-            this.tabLinks.Size = new System.Drawing.Size(1002, 478);
-            this.tabLinks.TabIndex = 2;
-            this.tabLinks.Text = "Links";
-            this.tabLinks.UseVisualStyleBackColor = true;
-            // 
-            // btnImagemProcurar
-            // 
-            this.btnImagemProcurar.Location = new System.Drawing.Point(517, 8);
-            this.btnImagemProcurar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnImagemProcurar.Name = "btnImagemProcurar";
-            this.btnImagemProcurar.Size = new System.Drawing.Size(159, 30);
-            this.btnImagemProcurar.TabIndex = 7;
-            this.btnImagemProcurar.Text = "&Procurar Imagem";
-            this.btnImagemProcurar.UseVisualStyleBackColor = true;
-            this.btnImagemProcurar.Click += new System.EventHandler(this.btnImagemProcurar_Click);
-            // 
-            // btnSalvarImagem
-            // 
-            this.btnSalvarImagem.Location = new System.Drawing.Point(517, 78);
-            this.btnSalvarImagem.Name = "btnSalvarImagem";
-            this.btnSalvarImagem.Size = new System.Drawing.Size(159, 29);
-            this.btnSalvarImagem.TabIndex = 10;
-            this.btnSalvarImagem.Text = "&Salvar Imagem";
-            this.btnSalvarImagem.UseVisualStyleBackColor = true;
-            this.btnSalvarImagem.Click += new System.EventHandler(this.btnSalvarImagem_Click);
-            // 
-            // picImagemVisualizador
-            // 
-            this.picImagemVisualizador.BackColor = System.Drawing.Color.Transparent;
-            this.picImagemVisualizador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picImagemVisualizador.Location = new System.Drawing.Point(7, 113);
-            this.picImagemVisualizador.Name = "picImagemVisualizador";
-            this.picImagemVisualizador.Size = new System.Drawing.Size(669, 357);
-            this.picImagemVisualizador.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picImagemVisualizador.TabIndex = 11;
-            this.picImagemVisualizador.TabStop = false;
-            // 
-            // lblImagemDescricao
-            // 
-            this.lblImagemDescricao.AutoSize = true;
-            this.lblImagemDescricao.Location = new System.Drawing.Point(2, 13);
-            this.lblImagemDescricao.Name = "lblImagemDescricao";
-            this.lblImagemDescricao.Size = new System.Drawing.Size(80, 20);
-            this.lblImagemDescricao.TabIndex = 12;
-            this.lblImagemDescricao.Text = "Descrição";
-            // 
-            // txtImagemDescricao
-            // 
-            this.txtImagemDescricao.Location = new System.Drawing.Point(6, 46);
-            this.txtImagemDescricao.Name = "txtImagemDescricao";
-            this.txtImagemDescricao.Size = new System.Drawing.Size(669, 26);
-            this.txtImagemDescricao.TabIndex = 13;
-            // 
             // tpgImagens
             // 
             this.tpgImagens.Controls.Add(this.lsvImagens);
@@ -268,9 +205,72 @@
             this.lsvImagens.Size = new System.Drawing.Size(315, 462);
             this.lsvImagens.SmallImageList = this.imlImagens;
             this.lsvImagens.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.lsvImagens.TabIndex = 15;
+            this.lsvImagens.TabIndex = 3;
             this.lsvImagens.UseCompatibleStateImageBehavior = false;
             this.lsvImagens.View = System.Windows.Forms.View.Tile;
+            // 
+            // imlImagens
+            // 
+            this.imlImagens.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imlImagens.ImageSize = new System.Drawing.Size(16, 16);
+            this.imlImagens.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // txtImagemDescricao
+            // 
+            this.txtImagemDescricao.Location = new System.Drawing.Point(6, 46);
+            this.txtImagemDescricao.Name = "txtImagemDescricao";
+            this.txtImagemDescricao.Size = new System.Drawing.Size(669, 26);
+            this.txtImagemDescricao.TabIndex = 1;
+            // 
+            // lblImagemDescricao
+            // 
+            this.lblImagemDescricao.AutoSize = true;
+            this.lblImagemDescricao.Location = new System.Drawing.Point(2, 13);
+            this.lblImagemDescricao.Name = "lblImagemDescricao";
+            this.lblImagemDescricao.Size = new System.Drawing.Size(80, 20);
+            this.lblImagemDescricao.TabIndex = 12;
+            this.lblImagemDescricao.Text = "Descrição";
+            // 
+            // picImagemVisualizador
+            // 
+            this.picImagemVisualizador.BackColor = System.Drawing.Color.Transparent;
+            this.picImagemVisualizador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picImagemVisualizador.Location = new System.Drawing.Point(7, 113);
+            this.picImagemVisualizador.Name = "picImagemVisualizador";
+            this.picImagemVisualizador.Size = new System.Drawing.Size(669, 357);
+            this.picImagemVisualizador.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImagemVisualizador.TabIndex = 11;
+            this.picImagemVisualizador.TabStop = false;
+            // 
+            // btnSalvarImagem
+            // 
+            this.btnSalvarImagem.Location = new System.Drawing.Point(517, 78);
+            this.btnSalvarImagem.Name = "btnSalvarImagem";
+            this.btnSalvarImagem.Size = new System.Drawing.Size(159, 29);
+            this.btnSalvarImagem.TabIndex = 2;
+            this.btnSalvarImagem.Text = "&Salvar Imagem";
+            this.btnSalvarImagem.UseVisualStyleBackColor = true;
+            this.btnSalvarImagem.Click += new System.EventHandler(this.btnSalvarImagem_Click);
+            // 
+            // btnImagemProcurar
+            // 
+            this.btnImagemProcurar.Location = new System.Drawing.Point(517, 8);
+            this.btnImagemProcurar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImagemProcurar.Name = "btnImagemProcurar";
+            this.btnImagemProcurar.Size = new System.Drawing.Size(159, 30);
+            this.btnImagemProcurar.TabIndex = 0;
+            this.btnImagemProcurar.Text = "&Procurar Imagem";
+            this.btnImagemProcurar.UseVisualStyleBackColor = true;
+            this.btnImagemProcurar.Click += new System.EventHandler(this.btnImagemProcurar_Click);
+            // 
+            // tabLinks
+            // 
+            this.tabLinks.Location = new System.Drawing.Point(4, 29);
+            this.tabLinks.Name = "tabLinks";
+            this.tabLinks.Size = new System.Drawing.Size(1002, 478);
+            this.tabLinks.TabIndex = 2;
+            this.tabLinks.Text = "Links";
+            this.tabLinks.UseVisualStyleBackColor = true;
             // 
             // ArtigoCadastro
             // 
@@ -292,9 +292,9 @@
             this.tabArtigo.ResumeLayout(false);
             this.tpgDados.ResumeLayout(false);
             this.tpgDados.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picImagemVisualizador)).EndInit();
             this.tpgImagens.ResumeLayout(false);
             this.tpgImagens.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picImagemVisualizador)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
