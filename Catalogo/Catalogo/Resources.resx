@@ -124,6 +124,12 @@
   <data name="garbage_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\garbage-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconfinder_star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\iconfinder_star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconfinder_star_inactive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\iconfinder_star_inactive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -141,5 +147,23 @@
   </data>
   <data name="search_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Icons\search-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\star-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\star-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\star-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star_inactive_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\star_inactive-16.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star_inactive_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\star_inactive-24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star_inactive_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Icons\star_inactive-32.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

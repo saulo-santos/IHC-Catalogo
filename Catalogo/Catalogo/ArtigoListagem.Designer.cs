@@ -180,10 +180,12 @@
             this.grdArtigos.ReadOnly = true;
             this.grdArtigos.RowHeadersVisible = false;
             this.grdArtigos.RowTemplate.Height = 30;
-            this.grdArtigos.Size = new System.Drawing.Size(863, 760);
+            this.grdArtigos.Size = new System.Drawing.Size(861, 760);
             this.grdArtigos.TabIndex = 3;
             this.grdArtigos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdArtigos_CellContentClickAsync);
             this.grdArtigos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdArtigos_CellContentDoubleClick);
+            this.grdArtigos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdArtigos_CellFormatting);
+            this.grdArtigos.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdArtigos_CellMouseEnter);
             this.grdArtigos.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdArtigos_CellPainting);
             this.grdArtigos.Resize += new System.EventHandler(this.grdArtigos_Resize);
             // 

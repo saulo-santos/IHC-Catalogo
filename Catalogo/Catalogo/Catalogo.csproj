@@ -134,12 +134,23 @@
   <ItemGroup>
     <Content Include="Icons\add-1.png" />
     <Content Include="Icons\garbage-1.png" />
+    <None Include="Icons\star_inactive-32.jpg" />
+    <None Include="Icons\star_inactive-24.jpg" />
+    <None Include="Icons\star_inactive-16.jpg" />
+    <None Include="Icons\iconfinder_star.png" />
+    <None Include="Icons\iconfinder_star_inactive.png" />
     <Content Include="Icons\minus-1.png" />
     <Content Include="Icons\minus.png" />
     <Content Include="Icons\plus.png" />
     <Content Include="Icons\resume.png" />
     <Content Include="Icons\search-1.png" />
     <Content Include="Icons\search.png" />
+    <Content Include="Icons\star-16.png" />
+    <Content Include="Icons\star-24.png" />
+    <Content Include="Icons\star-32.png" />
+    <None Include="Icons\star_inactive-16.png" />
+    <None Include="Icons\star_inactive-24.png" />
+    <None Include="Icons\star_inactive-32.png" />
     <None Include="Resources\Visualizador.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

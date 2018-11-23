@@ -73,6 +73,14 @@ namespace Catalogo
 
             var cellExcluirEnabled = ((DataGridViewDisableButtonCell)grdArtigos.Rows[rowSel].Cells["btnExcluir"]).Enabled;
 
+            if (e.ColumnIndex == ((DataGridViewCheckBoxCell)grdArtigos.Rows[rowSel].Cells["colFavorito"]).ColumnIndex)
+            {
+                bool artigoFav = !((bool)grdArtigos[e.ColumnIndex, e.RowIndex].Value);
+
+                grdArtigos[e.ColumnIndex, e.RowIndex].Value = artigoFav;
+                ArtigoFavoritar(artigoCodigo, Convert.ToInt32(artigoFav));
+            }
+
             if (e.ColumnIndex == ((DataGridViewDisableButtonCell)grdArtigos.Rows[rowSel].Cells["btnVisualizar"]).ColumnIndex)
             {
                 ((Principal)this.Parent.Parent).artigoVisualizador(artigoCodigo);
@@ -107,8 +115,46 @@ namespace Catalogo
             }
         }
 
+        private void grdArtigos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
+
         private void grdArtigos_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
+            if (grdArtigos.Columns[e.ColumnIndex].Name == "colFavorito" && e.RowIndex >= 0)
+            {
+                if ((bool)grdArtigos[e.ColumnIndex, e.RowIndex].Value == true)
+                {                    
+                    e.Graphics.DrawImage(Resources.star_16
+                    , System.Convert.ToInt32((e.CellBounds.Width / (double)2) - (Resources.star_16.Width / (double)2)) + e.CellBounds.X
+                    , System.Convert.ToInt32((e.CellBounds.Height / (double)2) - (Resources.star_16.Height / (double)2)) + e.CellBounds.Y
+                    , 16
+                    , 16);
+                }
+                else
+                {
+                    e.Graphics.DrawImage(Resources.star_inactive_16
+                    , System.Convert.ToInt32((e.CellBounds.Width / (double)2) - (Resources.star_inactive_16.Width / (double)2)) + e.CellBounds.X
+                    , System.Convert.ToInt32((e.CellBounds.Height / (double)2) - (Resources.star_inactive_16.Height / (double)2)) + e.CellBounds.Y
+                    , 16
+                    , 16);
+                }
+
+                e.Handled = true;
+            }
+
+            //if (e.RowIndex == 0 && e.ColumnIndex < 0)
+            //{
+            //    e.Graphics.DrawImage(Resources.star_inactive_16, e.CellBounds);
+            //    e.Handled = true;
+            //}
+            //else if (e.RowIndex == 1 && e.ColumnIndex < 0)
+            //{
+            //    e.Graphics.DrawImage(myImage2, e.CellBounds);
+            //    e.Handled = true;
+            //}
+
             /*
             if (grdArtigos.Columns[e.ColumnIndex].Name == "btnVisualizar" && e.RowIndex >= 0)
             //if (((DataGridViewDisableButtonCell)grdArtigos.Rows[e.RowIndex].Cells["btnVisualizar"]).ColumnIndex == e.ColumnIndex && e.RowIndex >= 0)
@@ -221,8 +267,8 @@ namespace Catalogo
             if (pbooRetorno)
             {
                 string strSQL = @"
-                    SELECT 
-                    A.ARTI_CODIGO, A.ARTI_NOME, A.ARTI_CATE_CODIGO, C.CATE_NOME
+                    SELECT  
+                    A.ARTI_FAVORITO, A.ARTI_CODIGO, A.ARTI_NOME, A.ARTI_CATE_CODIGO, C.CATE_NOME
                     FROM TB_ARTIGO A 
                     INNER JOIN TB_CATEGORIA C ON C.CATE_CODIGO = A.ARTI_CATE_CODIGO 
                     WHERE 1 = 1 ";
@@ -267,15 +313,18 @@ namespace Catalogo
 
         private void GridArtigosFormatar()
         {
-            grdArtigos.Columns[0].HeaderText = "Código";
-            grdArtigos.Columns[0].Visible = false;
+            grdArtigos.Columns[0].HeaderText = "Favorito";
+            grdArtigos.Columns[0].Name = "colFavorito";
 
-            grdArtigos.Columns[1].HeaderText = "Título";
+            grdArtigos.Columns[1].HeaderText = "Código";
+            grdArtigos.Columns[1].Visible = false;
 
-            grdArtigos.Columns[2].HeaderText = "Código Categoria";
-            grdArtigos.Columns[2].Visible = false;
+            grdArtigos.Columns[2].HeaderText = "Título";
 
-            grdArtigos.Columns[3].HeaderText = "Categoria";
+            grdArtigos.Columns[3].HeaderText = "Código Categoria";
+            grdArtigos.Columns[3].Visible = false;
+
+            grdArtigos.Columns[4].HeaderText = "Categoria";
 
             DataGridViewDisableButtonColumn btcVisualizar = new DataGridViewDisableButtonColumn();
             btcVisualizar.Name = "btnVisualizar";
@@ -391,6 +440,39 @@ namespace Catalogo
             }
         }
 
+        private void ArtigoFavoritar(int codArtigo, int pFavorito)
+        {
+            try
+            {
+                SqlConnection cnn = new SqlConnection();
+                string pstrMsg = "";
+                bool pbooRetorno = false;
+
+                cnn = ConexaoBD.CriarConexao(out pstrMsg, out pbooRetorno);
+
+                if (pbooRetorno)
+                {
+                    string strSQL = @"
+                        UPDATE TB_ARTIGO
+                        SET ARTI_FAVORITO = " + pFavorito + " WHERE ARTI_CODIGO = " + codArtigo;
+
+                    SqlCommand sqlCmd = new SqlCommand(strSQL, cnn);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show(pstrMsg, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void ExcluirButtonEnable(bool blnEnable = false)
         {
             foreach (DataGridViewRow row in grdArtigos.Rows)
@@ -401,5 +483,20 @@ namespace Catalogo
         }
 
         #endregion
+
+        private void grdArtigos_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //Skip the Column and Row headers
+            if (e.ColumnIndex < 0 || e.RowIndex < 0)
+            {
+                return;
+            }
+            var dataGridView = (sender as DataGridView);
+            //Check the condition as per the requirement casting the cell value to the appropriate type
+            if (e.ColumnIndex == 0)
+                dataGridView.Cursor = Cursors.Hand;
+            else
+                dataGridView.Cursor = Cursors.Default;
+        }
     }
 }
