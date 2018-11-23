@@ -21,6 +21,8 @@ namespace Catalogo
         /// <returns>SqlConnection</returns>
         public static SqlConnection CriarConexao(out String pstrMsg, out Boolean pbooRetorno)
         {
+            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Path.GetFullPath(@"..\..\"));
+
             pstrMsg = default(String);
             pbooRetorno = default(Boolean);
 
